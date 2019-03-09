@@ -1,0 +1,100 @@
+{
+  "#0000": {
+    "title": "RE 1/100 Bawoo",
+    "price": 34.59,
+    "grade": "RE/100",
+    "series": "ZZ Gundam",
+    "img": "../assets/img/bawoo.jpg"
+  },
+  "#0001": {
+    "title": "HGUC 1/144 Byarlant",
+    "price": 23.99,
+    "grade": "HG",
+    "series": "Z Gundam",
+    "img": "../assets/img/byarlant.jpg"
+  },
+  "#0002": {
+    "title": "HGUC 1/144 Dijeh",
+    "price": 18.99,
+    "grade": "HG",
+    "series": "Z Gundam",
+    "img": "../assets/img/dijeh.jpg"
+  },
+  "#0003": {
+    "title": "HGUC 1/144 Galbaldy Beta ",
+    "price": 15.99,
+    "grade": "HG",
+    "series": "Z Gundam",
+    "img": "../assets/img/galbaldy.jpg"
+  },
+  "#0004": {
+    "title": "MG 1/100 GM Command (Colony Type)",
+    "price": 34.99,
+    "grade": "MG",
+    "series": "Gundam 0080",
+    "img": "../assets/img/gmcommand.jpg"
+  },
+  "#0005": {
+    "title": "MG 1/100 RGM-79SP GM Sniper II",
+    "price": 39.99,
+    "grade": "MG",
+    "series": "Gundam 0080",
+    "img": "../assets/img/gmsniperii.jpg"
+  },
+  "#0006": {
+    "title": "MG 1/100 GM Sniper Custom",
+    "price": 40.99,
+    "grade": "MG",
+    "series": "MSV",
+    "img": "../assets/img/gmsniper.jpg"
+  },
+  "#0007": {
+    "title": "RE 1/100 Gundam MK-III",
+    "price": 36.59,
+    "grade": "RE/100",
+    "series": "Z-MSV",
+    "img": "../assets/img/gundammkiii.jpg"
+  },
+  "#0008": {
+    "title": "RE/100 AMX-103 Hamma Hamma",
+    "price": 38.99,
+    "grade": "RE/100",
+    "series": "ZZ Gundam",
+    "img": "../assets/img/hammahamma.jpg"
+  },
+  "#0009": {
+    "title": "MG 1/100 Jegan",
+    "price": 39.99,
+    "grade": "MG",
+    "series": "CCA",
+    "img": "../assets/img/jegan.jpg"
+  },
+  "#0010": {
+    "title": "RG 1/144 RX-178 Gundam MK-II (TITANS)",
+    "price": 25.99,
+    "grade": "RG",
+    "series": "Z Gundam",
+    "img": "../assets/img/mk2titans.jpg"
+  },
+  "#0011": {
+    "title": "HGUC 1/144 AMX-104 R-Jarja",
+    "price": 18.99,
+    "grade": "HG",
+    "series": "ZZ Gundam",
+    "img": "../assets/img/rjarja.jpg"
+  },
+  "#0012": {
+    "title": "RG 1/144 MS-06S Zaku II",
+    "price": 25.99,
+    "grade": "RG",
+    "series": "Mobile Suit Gundam",
+    "img": "../assets/img/zakuii.jpg"
+  },
+  "#0013": {
+    "title": "RG 1/144 Zgok Char Custom",
+    "price": 25.99,
+    "grade": "RG",
+    "series": "Mobile Suit Gundam",
+    "img": "../assets/img/zgok.jpg"
+  }
+}

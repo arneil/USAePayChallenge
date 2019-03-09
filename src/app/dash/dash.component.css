@@ -1,0 +1,28 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  width: 300px;
+  margin: 10px;
+}
+
+.product-image-container {
+  width: 250px;
+  height: 200px;
+}
+
+.product-image {
+  width: auto;
+  height: 100%;
+}
+
+.dash {
+  background-color: #EEEEEE;
+}
