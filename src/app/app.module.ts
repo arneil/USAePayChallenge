@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { appRoutes } from './app.routes';
 
 import { MaterialModule } from './material/material.module';
 import { DashComponent } from './dash/dash.component';
@@ -19,7 +20,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
   imports: [
     MaterialModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

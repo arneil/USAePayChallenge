@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../core/cart.service';
+import { Product } from '../core/data-types';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  cartContents: Product[];
+
+  displayedColumns: string[] = ['title', 'remove', 'price' ]
+
+  constructor(
+    private cartService: CartService
+  ) { }
 
   ngOnInit() {
+    this.cartContents = this.cartService.getCartContents();
+    console.log(this.cartContents);
+  }
+
+  remove(product) {
+
+  }
+
+  getTotalCost() {
+    return this.cartContents.map(p => p.price).reduce((acc, value) => acc + value, 0);
   }
 
 }

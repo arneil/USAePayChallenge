@@ -4,7 +4,7 @@
     <span class="spacer"></span>
     <span> Cart </span>
     <button mat-button>
-      <mat-icon [matBadge]="numItems" matBadgeColor="accent">shopping_cart</mat-icon>
+      <mat-icon [matBadge]="numItems" matBadgeColor="accent" routerLink="/cart" routerLinkActive="active">shopping_cart</mat-icon>
     </button>
   </mat-toolbar>
   <div class="products">
@@ -24,7 +24,7 @@
         </ul>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="addToCart(product)">Add to Cart</button>
+        <button mat-stroked-button (click)="addToCart(product)" color="accent" style="float: right;" >Add to Cart</button>
       </mat-card-actions>
     </mat-card>
   </div>

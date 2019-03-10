@@ -21,6 +21,10 @@ export class CartService {
     this.cartContents = this.cartContents.slice(0, index+1).concat(this.cartContents.slice(index+1, this.cartContents.length));
   }
 
+  getCartContents() {
+    return this.cartContents;
+  }
+
   emptyCart() {
     this.cartContents = [];
   }

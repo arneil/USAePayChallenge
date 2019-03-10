@@ -1,0 +1,22 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.table-area {
+  margin: 35px;
+  width: 500px;
+  max-width: 500px;
+}
+
+.checkout {
+  margin: 15px 0px;
+  float: right;
+}
+
+table {
+  width: 100%;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
