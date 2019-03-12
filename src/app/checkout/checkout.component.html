@@ -28,4 +28,14 @@
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
   </table>
   <h2> Select Payment Method: </h2>
+  <div class="payment-area">
+    <mat-form-field>
+      <mat-select placeholder="select card..." [(value)]="selected">
+        <mat-option *ngFor="let card of cards" [value]="card">
+          {{card.number}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="makeSale(selected)">Confirm purchase</button>
+  </div>
 <div>

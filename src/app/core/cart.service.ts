@@ -14,7 +14,6 @@ export class CartService {
 
   addToCart(product) {
     this.cartContents.push(product);
-    console.log(this.cartContents);
   }
 
   removeFromCart(index) {

@@ -1,0 +1,10 @@
+{
+  "#0000": {
+          "cardholder": "John doe",
+          "number": "4000100011112224",
+          "expiration": "0919",
+          "cvc": "123",
+          "avs_street": "1234 Main",
+          "avs_zip": "12345"
+      }
+}

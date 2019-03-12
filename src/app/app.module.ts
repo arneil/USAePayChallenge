@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { appRoutes } from './app.routes';
 
 import { MaterialModule } from './material/material.module';
@@ -21,6 +22,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     MaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

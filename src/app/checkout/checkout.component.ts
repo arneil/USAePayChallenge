@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../core/data-types';
+import { Product, Card } from '../core/data-types';
 import { CartService } from '../core/cart.service';
+import { CheckoutService } from '../core/checkout.service';
 
 export interface Transaction {
   item: string;
@@ -18,14 +19,19 @@ export class CheckoutComponent implements OnInit {
   transactions: Transaction[];
   total: number = 0;
   displayedColumns: string[] = ['item', 'cost'];
+  cards: Card[];
+  selected: Card;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private checkoutService: CheckoutService
   ) { }
 
   ngOnInit() {
     this.transactions = [];
     this.total = 0;
+
+    this.cards = this.checkoutService.getCards();
 
     this.cartContents = this.cartService.getCartContents();
     for(let product of this.cartContents) {
@@ -52,6 +58,15 @@ export class CheckoutComponent implements OnInit {
 
   getTotalCost() {
     return this.total;
+  }
+
+  makeSale(card) {
+    var response;
+    this.checkoutService.makeSale(card).subscribe( (data) => {
+      console.log("VVV DATA VVV");
+      console.log(data);
+      response = data;
+    });
   }
 
 }

@@ -7,3 +7,14 @@ export class Product {
     public img: string
   ) { }
 }
+
+export class Card {
+  constructor(
+    public cardholder: string,
+    public number: string,
+    public expiration: string,
+    public cvc: string,
+    public avs_street: string,
+    public avs_zip: string
+  ) { }
+}
