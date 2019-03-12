@@ -52,6 +52,6 @@ export class CheckoutService {
       },
       "invoice": "12356"
     };
-    return this.http.post('api/transactions/sale', body);
+    return this.http.post('/transactions/sale', body);
   }
 }
