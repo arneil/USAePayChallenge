@@ -2,9 +2,9 @@
   <mat-toolbar color="primary">
     <span> Gundam Store </span>
     <span class="spacer"></span>
-    <span> Cart </span>
-    <button mat-button>
-      <mat-icon [matBadge]="numItems" matBadgeColor="accent" routerLink="/cart" routerLinkActive="active">shopping_cart</mat-icon>
+    <button mat-button routerLink="/cart" routerLinkActive="active">
+        <span> Cart </span>
+      <mat-icon [matBadge]="numItems" matBadgeColor="accent">shopping_cart</mat-icon>
     </button>
   </mat-toolbar>
   <div class="products">

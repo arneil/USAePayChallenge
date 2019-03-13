@@ -23,7 +23,7 @@ export class CartComponent implements OnInit {
 
   //TODO: Implement item removal
   remove(product) {
-
+    this.cartContents = this.cartService.remove(product);
   }
 
   cartIsEmpty() {

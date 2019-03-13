@@ -29,7 +29,7 @@ router.post('/sale', function(req, res, next) {
       res.json(parsedBody);
     })
     .catch(function(err) {
-      console.log(err);
+      res.render('error', {error: err});
     });
 });
 

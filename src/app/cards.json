@@ -31,12 +31,12 @@
     "avs_street": "123 Fake St",
     "avs_zip": "12345"
   },
-  "#0004": {
-    "cardholder": "Ramba Ral",
-    "number": "4000200211112220",
-    "expiration": "0919",
-    "cvc": "999",
+  "#0005": {
+    "cardholder": "Bad Card",
+    "number": "0000000000000000",
+    "expiration": "0000",
+    "cvc": "000",
     "avs_street": "123 Fake St",
-    "avs_zip": "12345"
+    "avs_zip": "00000"
   }
 }

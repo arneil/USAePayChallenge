@@ -16,8 +16,10 @@ export class CartService {
     this.cartContents.push(product);
   }
 
-  removeFromCart(index) {
-    this.cartContents = this.cartContents.slice(0, index+1).concat(this.cartContents.slice(index+1, this.cartContents.length));
+  remove(product) {
+    let index: number = this.cartContents.findIndex(p => p === product);
+    this.cartContents = this.cartContents.slice(0, index).concat(this.cartContents.slice(index+1, this.cartContents.length));
+    return this.cartContents;
   }
 
   getCartContents() {

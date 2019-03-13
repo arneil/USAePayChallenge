@@ -29,6 +29,8 @@ export class CheckoutComponent implements OnInit {
   dialogVisible: boolean;
   approved: boolean;
 
+  cheatsheetEnabled: boolean;
+
 
   constructor(
     private cartService: CartService,
@@ -41,6 +43,7 @@ export class CheckoutComponent implements OnInit {
     this.receiptItems = [];
     this.sumTotal = 0;
     this.purchaseTotal = 0;
+    this.cheatsheetEnabled = false;
 
     this.cards = this.checkoutService.getCards();
 
@@ -97,6 +100,10 @@ export class CheckoutComponent implements OnInit {
     this.dialogVisible = false;
     this.cartService.emptyCart();
     this.router.navigate(['/']);
+  }
+
+  toggleCheatsheet() {
+    this.cheatsheetEnabled = !this.cheatsheetEnabled;
   }
 
 }

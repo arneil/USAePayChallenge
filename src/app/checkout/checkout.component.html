@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   <span> Gundam Store - Checkout </span>
   <span class="spacer"></span>
-  <span> Back to Cart </span>
   <button mat-button routerLink="/cart" routerLinkActive="active">
+    <span> Back to Cart </span>
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -39,6 +39,17 @@
     <button mat-button [disabled]="sumTotal == 0" (click)="makeSale(selected)">Confirm purchase</button>
     <!-- TODO: Card info field -->
 </div>
+<button mat-button (click)="toggleCheatsheet()"> Show Cheat Sheet </button>
+<div *ngIf="cheatsheetEnabled">
+  <ul>
+    <li>2224: Successfull, AVS: YYY, CVV2: M</li>
+    <li>2220: Declined</li>
+    <li>2228: Do Not Honor</li>
+    <li>2221: Successfull, AVS: YYY, CVV2: N</li>
+    <li>0: Bad Card</li>
+
+  </ul>
+</div>
 
 <div class="result-overlay" *ngIf="dialogVisible">
   <div class="result-dialog">
@@ -48,6 +59,7 @@
       <ul>
         <li> Address match status: {{ resultData.avs.result }} </li>
         <li> CVC match status: {{ resultData.cvc.result }} </li>
+        <li> Unique key: {{ resultData.key }} </li>
         <li> Reference Number: {{ resultData.refnum }} </li>
       </ul>
       <button class="dismiss-button" mat-button (click)="completeTransaction()" style="float: right;">Ok</button>
