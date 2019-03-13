@@ -53,6 +53,7 @@ export class CheckoutComponent implements OnInit {
       });
     }
 
+    //TODO: Don't use magic numbers
     let tax = this.purchaseTotal * .09;
     let shipping = this.cartContents.length * 3.14
 

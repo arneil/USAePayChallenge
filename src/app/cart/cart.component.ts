@@ -21,8 +21,13 @@ export class CartComponent implements OnInit {
     this.cartContents = this.cartService.getCartContents();
   }
 
+  //TODO: Implement item removal
   remove(product) {
 
+  }
+
+  cartIsEmpty() {
+    return this.cartContents.map(p => p.price).reduce((acc, value) => acc + value, 0) == 0;
   }
 
   getTotalCost() {

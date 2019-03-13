@@ -36,18 +36,25 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-button (click)="makeSale(selected)">Confirm purchase</button>
-  </div>
+    <button mat-button [disabled]="sumTotal == 0" (click)="makeSale(selected)">Confirm purchase</button>
+    <!-- TODO: Card info field -->
 </div>
 
 <div class="result-overlay" *ngIf="dialogVisible">
   <div class="result-dialog">
     <div class="result-content" *ngIf="approved">
       <h2> Transaction Approved! </h2>
+      <h4> Transaction Trivia: </h4>
+      <ul>
+        <li> Address match status: {{ resultData.avs.result }} </li>
+        <li> CVC match status: {{ resultData.cvc.result }} </li>
+        <li> Reference Number: {{ resultData.refnum }} </li>
+      </ul>
       <button class="dismiss-button" mat-button (click)="completeTransaction()" style="float: right;">Ok</button>
     </div>
     <div class="result-content" *ngIf="!approved">
       <h2 style="color: red"> Transaction Declined! </h2>
+      <h4 style="color: red"> Reason: {{ resultData.error }} </h4>
       <button class="dismiss-button" mat-button (click)="dismiss()" style="float: right;">Try Again</button>
     </div>
   </div>

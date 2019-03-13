@@ -14,5 +14,29 @@
     "cvc": "999",
     "avs_street": "123 Fake St",
     "avs_zip": "12345"
+  },
+  "#0002": {
+    "cardholder": "Haman Karn",
+    "number": "4000300211112228",
+    "expiration": "0919",
+    "cvc": "999",
+    "avs_street": "345 Fake St",
+    "avs_zip": "56789"
+  },
+  "#0003": {
+    "cardholder": "Minerva Zabi",
+    "number": "4000200111112221",
+    "expiration": "0919",
+    "cvc": "999",
+    "avs_street": "123 Fake St",
+    "avs_zip": "12345"
+  },
+  "#0004": {
+    "cardholder": "Ramba Ral",
+    "number": "4000200211112220",
+    "expiration": "0919",
+    "cvc": "999",
+    "avs_street": "123 Fake St",
+    "avs_zip": "12345"
   }
 }
