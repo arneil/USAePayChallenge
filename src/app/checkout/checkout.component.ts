@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, Card } from '../core/data-types';
+import { Product, Card, AmountDetail } from '../core/data-types';
 import { CartService } from '../core/cart.service';
 import { CheckoutService } from '../core/checkout.service';
+import { Router } from "@angular/router";
 
-export interface Transaction {
+export interface ReceiptItem {
   item: string;
   cost: number;
 }
@@ -16,57 +17,85 @@ export interface Transaction {
 export class CheckoutComponent implements OnInit {
 
   cartContents: Product[];
-  transactions: Transaction[];
-  total: number = 0;
+  receiptItems: ReceiptItem[];
+  purchaseTotal: number;
+  sumTotal: number;
+  details: AmountDetail;
   displayedColumns: string[] = ['item', 'cost'];
   cards: Card[];
   selected: Card;
 
+  resultData: any = {};
+  dialogVisible: boolean;
+  approved: boolean;
+
+
   constructor(
     private cartService: CartService,
-    private checkoutService: CheckoutService
+    private checkoutService: CheckoutService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.transactions = [];
-    this.total = 0;
+    this.dialogVisible = false;
+    this.receiptItems = [];
+    this.sumTotal = 0;
+    this.purchaseTotal = 0;
 
     this.cards = this.checkoutService.getCards();
 
     this.cartContents = this.cartService.getCartContents();
     for(let product of this.cartContents) {
-      this.total += product.price;
-      this.transactions.push({
+      this.purchaseTotal += product.price;
+      this.receiptItems.push({
         item: product.title,
         cost: product.price
       });
     }
 
-    this.transactions.push({
-      item: "tax",
-      cost: this.total * .09
-    })
-    this.total *= 1.09
+    let tax = this.purchaseTotal * .09;
+    let shipping = this.cartContents.length * 3.14
 
-    let shippingCost = 2.13 * this.cartContents.length;
-    this.transactions.push({
-      item: "shipping",
-      cost: shippingCost
+    this.receiptItems.push({
+      item: "tax",
+      cost: tax
     });
-    this.total += shippingCost;
+
+    this.receiptItems.push({
+      item: "shipping",
+      cost: shipping
+    });
+
+    this.details = {
+      tax: tax,
+      shipping: shipping
+    };
+
+    this.sumTotal = this.purchaseTotal + tax + shipping;
   }
 
   getTotalCost() {
-    return this.total;
+    return this.sumTotal;
   }
 
   makeSale(card) {
-    var response;
-    this.checkoutService.makeSale(card).subscribe( (data) => {
-      console.log("VVV DATA VVV");
-      console.log(data);
-      response = data;
+
+    this.checkoutService.makeSale(card, this.sumTotal, this.details).subscribe( (data) => {
+      this.resultData = data;
+      console.log(this.resultData);
+      this.approved = this.resultData.result == "Approved";
+      this.dialogVisible = true;
     });
+  }
+
+  dismiss() {
+    this.dialogVisible = false;
+  }
+
+  completeTransaction() {
+    this.dialogVisible = false;
+    this.cartService.emptyCart();
+    this.router.navigate(['/']);
   }
 
 }

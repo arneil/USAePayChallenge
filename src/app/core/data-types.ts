@@ -18,3 +18,19 @@ export class Card {
     public avs_zip: string
   ) { }
 }
+
+export class Transaction {
+  constructor(
+    public command: string,
+    public amount: string,
+    public amount_detail: AmountDetail,
+    public creditcard: Card
+  ) { }
+}
+
+export class AmountDetail {
+  constructor(
+    public tax: number,
+    public shipping: number
+  ) { }
+}

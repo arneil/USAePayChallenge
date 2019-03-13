@@ -1,29 +1,23 @@
 import { Injectable } from '@angular/core';
-import { sha256 } from 'js-sha256';
-import { Buffer } from 'buffer';
-import { Card } from './data-types';
+import { Card, Transaction, AmountDetail } from './data-types';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 declare var require: any;
 const data: any = require('../cards.json');
+// Using a proxy service in dev environment requires the /api uri prefix - see proxy.conf.json.
+// Production environment requires no such prefix.
+var uriPrefix = environment.production ? '' : '/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckoutService {
 
-  authKey: string;
   cards: Card[];
 
   constructor(private http: HttpClient) {
-    let seed = Math.random();
-    let apikey = "_1cn3Tg85kxwZQ1Olic34myGa3neK7qU";
-    let apipin = "1234";
-    let prehash = apikey + seed + apipin;
-    let apihash = 's2/' + seed + '/' + sha256(prehash);
-    this.authKey = new Buffer(apikey + ":" + apihash).toString('base64');
-
     this.cards = [];
     for(let selector of Object.keys(data)){
       this.cards = this.cards.concat(data[selector]);
@@ -34,24 +28,13 @@ export class CheckoutService {
     return this.cards;
   }
 
-  makeSale(card) {
-    var body = {
-      "command": "cc:sale",
-      "amount": "5.00",
-      "amount_detail": {
-          "tax": "1.00",
-          "tip": "0.50"
-      },
-      "creditcard": {
-          "cardholder": "John Doe",
-          "number": "4000100011112224",
-          "expiration": "0919",
-          "cvc": "123",
-          "avs_street": "1234 Main",
-          "avs_zip": "12345"
-      },
-      "invoice": "12356"
+  makeSale(card, amount, details) {
+    var t: Transaction = {
+      command: "cc:sale",
+      amount: amount,
+      amount_detail: details,
+      creditcard: card
     };
-    return this.http.post('/transactions/sale', body);
+    return this.http.post(uriPrefix + '/transactions/sale', t);
   }
 }

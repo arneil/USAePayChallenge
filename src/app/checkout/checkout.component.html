@@ -8,7 +8,7 @@
 </mat-toolbar>
 <div class="checkout-area">
   <h2> Order Summary: </h2>
-  <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+  <table mat-table [dataSource]="receiptItems" class="mat-elevation-z8">
     <!-- Item Column -->
     <ng-container matColumnDef="item">
       <th mat-header-cell *matHeaderCellDef> Item </th>
@@ -32,10 +32,23 @@
     <mat-form-field>
       <mat-select placeholder="select card..." [(value)]="selected">
         <mat-option *ngFor="let card of cards" [value]="card">
-          {{card.number}}
+          Card Ending in {{ card.number%10000 }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-button (click)="makeSale(selected)">Confirm purchase</button>
   </div>
-<div>
+</div>
+
+<div class="result-overlay" *ngIf="dialogVisible">
+  <div class="result-dialog">
+    <div class="result-content" *ngIf="approved">
+      <h2> Transaction Approved! </h2>
+      <button class="dismiss-button" mat-button (click)="completeTransaction()" style="float: right;">Ok</button>
+    </div>
+    <div class="result-content" *ngIf="!approved">
+      <h2 style="color: red"> Transaction Declined! </h2>
+      <button class="dismiss-button" mat-button (click)="dismiss()" style="float: right;">Try Again</button>
+    </div>
+  </div>
+</div>

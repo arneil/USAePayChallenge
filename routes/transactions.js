@@ -3,6 +3,14 @@ var router = express.Router();
 var rp = require('request-promise');
 
 //gen auth token here
+var sha256 = require('js-sha256');
+
+var seed = Math.random();
+var apikey = "_1cn3Tg85kxwZQ1Olic34myGa3neK7qU"
+var apipin = "1234"
+var prehash = apikey + seed + apipin;
+var apihash = 's2/'+ seed + '/' + sha256(prehash);
+var authKey = new Buffer(apikey + ":" + apihash).toString('base64')
 
 router.post('/sale', function(req, res, next) {
   var options = {
@@ -10,7 +18,7 @@ router.post('/sale', function(req, res, next) {
     uri: 'https://sandbox.usaepay.com/api/v2/transactions',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Basic X1Y4N1F0YjUxM0NkM3ZhYk03UkMwVGJ0SldlU284cDc6czIvYWJjZGVmZ2hpamtsbW5vcC9iNzRjMmZhOTFmYjBhMDk3NTVlMzc3ZWU4ZTIwYWE4NmQyYjkyYzNkMmYyNzcyODBkYjU5NWY2MzZiYjE5MGU2'
+      'Authorization': ('Basic ' + authKey)
     },
     body: req.body,
     json: true

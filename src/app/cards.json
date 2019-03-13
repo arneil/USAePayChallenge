@@ -1,10 +1,18 @@
 {
   "#0000": {
-          "cardholder": "John doe",
-          "number": "4000100011112224",
-          "expiration": "0919",
-          "cvc": "123",
-          "avs_street": "1234 Main",
-          "avs_zip": "12345"
-      }
+    "cardholder": "John doe",
+    "number": "4000100011112224",
+    "expiration": "0919",
+    "cvc": "123",
+    "avs_street": "1234 Main",
+    "avs_zip": "12345"
+  },
+  "#0001": {
+    "cardholder": "Casval Deikun",
+    "number": "4000300011112220",
+    "expiration": "0919",
+    "cvc": "999",
+    "avs_street": "123 Fake St",
+    "avs_zip": "12345"
+  }
 }
