@@ -51,6 +51,8 @@
   </ul>
 </div>
 
+<button mat-raised-button *ngIf="false" [disabled]="sumTotal == 0" color="warn" (click)="serverError(selected)"> Return Server Error </button>
+
 <div class="result-overlay" *ngIf="dialogVisible">
   <div class="result-dialog">
     <div class="result-content" *ngIf="approved">
@@ -68,6 +70,14 @@
       <h2 style="color: red"> Transaction Declined! </h2>
       <h4 style="color: red"> Reason: {{ resultData.error }} </h4>
       <button class="dismiss-button" mat-button (click)="dismiss()" style="float: right;">Try Again</button>
+    </div>
+  </div>
+</div>
+<div class="result-overlay" *ngIf="displayError">
+  <div class="result-dialog">
+    <div class="result-content" style="color: red;">
+      Error: {{ error.message }}
+      <button class="dismiss-button" mat-stroked-button color="warn" (click)="dismissError()" style="float: right;">Ok</button>
     </div>
   </div>
 </div>

@@ -30,6 +30,8 @@ export class CheckoutComponent implements OnInit {
   approved: boolean;
 
   cheatsheetEnabled: boolean;
+  displayError: boolean;
+  error: any;
 
 
   constructor(
@@ -44,6 +46,8 @@ export class CheckoutComponent implements OnInit {
     this.sumTotal = 0;
     this.purchaseTotal = 0;
     this.cheatsheetEnabled = false;
+    this.displayError = false;
+    this.error = null;
 
     this.cards = this.checkoutService.getCards();
 
@@ -83,13 +87,41 @@ export class CheckoutComponent implements OnInit {
   }
 
   makeSale(card) {
+    this.checkoutService.makeSale(card, this.sumTotal, this.details).subscribe(
+      (data) => {
+        this.resultData = data;
+        console.log(this.resultData);
+        this.approved = this.resultData.result == "Approved";
+        this.dialogVisible = true;
+      },
+      (err) => {
+        this.showError(err);
+      }
+    );
+  }
 
-    this.checkoutService.makeSale(card, this.sumTotal, this.details).subscribe( (data) => {
-      this.resultData = data;
-      console.log(this.resultData);
-      this.approved = this.resultData.result == "Approved";
-      this.dialogVisible = true;
-    });
+  serverError(card) {
+    this.checkoutService.serverError(card, this.sumTotal, this.details).subscribe(
+      (data) => {
+        this.resultData = data;
+        console.log(this.resultData);
+        this.approved = this.resultData.result == "Approved";
+        this.dialogVisible = true;
+      },
+      (err) => {
+        this.showError(err);
+      }
+    );
+  }
+
+  showError(err) {
+    this.error = err;
+    this.displayError = true;
+  }
+
+  dismissError(err) {
+    this.error = null;
+    this.displayError = false;
   }
 
   dismiss() {

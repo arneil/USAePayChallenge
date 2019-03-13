@@ -37,4 +37,15 @@ export class CheckoutService {
     };
     return this.http.post(uriPrefix + '/transactions/sale', t);
   }
+
+  serverError(card, amount, details) {
+    var t: Transaction = {
+      command: "cc:sale",
+      amount: amount,
+      amount_detail: details,
+      creditcard: card
+    };
+    return this.http.post(uriPrefix + '/transactions/error', t);
+  }
+
 }

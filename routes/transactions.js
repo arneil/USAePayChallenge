@@ -29,7 +29,28 @@ router.post('/sale', function(req, res, next) {
       res.json(parsedBody);
     })
     .catch(function(err) {
-      res.render('error', {error: err});
+      res.json(err);
+    });
+});
+
+router.post('/error', function(req, res, next) {
+  var options = {
+    method: 'POST',
+    uri: 'https://httpstat.us/500',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': ('Basic ' + authKey)
+    },
+    body: req.body,
+    json: true
+  };
+
+  rp(options)
+    .then(function(parsedBody) {
+      res.json(parsedBody);
+    })
+    .catch(function(err) {
+      res.json(err);
     });
 });
 
